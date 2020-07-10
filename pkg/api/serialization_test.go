@@ -24,7 +24,7 @@ import (
 	kapitesting "k8s.io/kubernetes/pkg/api/testing"
 	"k8s.io/kubernetes/pkg/apis/apps"
 	kapi "k8s.io/kubernetes/pkg/apis/core"
-	v1 "k8s.io/kubernetes/pkg/apis/core/v1"
+	corev1 "k8s.io/kubernetes/pkg/apis/core/v1"
 	"k8s.io/kubernetes/pkg/apis/core/validation"
 	extensionsv1beta1 "k8s.io/kubernetes/pkg/apis/extensions/v1beta1"
 
@@ -157,7 +157,7 @@ func originFuzzer(t *testing.T, seed int64) *fuzz.Fuzzer {
 				case *build.BuildConfig:
 					codec = apitesting.TestCodec(legacyscheme.Codecs, buildv1.SchemeGroupVersion)
 				default:
-					codec = apitesting.TestCodec(legacyscheme.Codecs, v1.SchemeGroupVersion)
+					codec = apitesting.TestCodec(legacyscheme.Codecs, corev1.SchemeGroupVersion)
 				}
 
 				b, err := runtime.Encode(codec, obj)
